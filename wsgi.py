@@ -4,7 +4,7 @@ from flask.cli import with_appcontext, AppGroup
 
 from App.database import create_db
 from App.main import app, migrate
-from App.controllers import ( create_user, get_all_users_json, get_all_users )
+from App.controllers import ( create_user, get_all_users_json, get_all_users, send_email )
 
 # This commands file allow you to create convenient CLI commands
 # for testing controllers
@@ -55,3 +55,7 @@ Generic Commands
 def initialize():
     create_db(app)
     print('database intialized')
+
+@app.cli.command("send")
+def send():
+    send_email()
