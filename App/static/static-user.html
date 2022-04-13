@@ -27,6 +27,13 @@
     </nav>
     
     <div class="container" id="content">
+
+        <form style="border: solid 1px; padding: 10px; margin: 10px" method="POST" action="/upload" enctype="multipart/form-data">
+          <h5>Add recipients from CSV</h5>
+          <p><input type="file" name="file"></p>
+          <p><input type="submit" value="Submit"></p>
+        </form>
+        
         <div class="row">
             <p>
                 This is table is rendered on the Client. JavaScript code requests the data from <a href="/api/users">/api/users</a> and writes it to this page.
