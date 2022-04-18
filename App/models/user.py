@@ -3,8 +3,13 @@ from App.database import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username =  db.Column(db.String, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
+    firstName = db.Column(db.String(100))
+    lastName = db.Column(db.String(100))
+    username =  db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+    emails = db.relationship('Email', backref='user')
+    lists = db.relationship('MailingList', backref='user')
 
     def __init__(self, username, password):
         self.username = username
@@ -13,7 +18,10 @@ class User(db.Model):
     def toDict(self):
         return{
             'id': self.id,
-            'username': self.username
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'username': self.username,
+            'email': self.email,
         }
 
     def set_password(self, password):
