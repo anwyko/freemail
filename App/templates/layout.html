@@ -53,24 +53,32 @@
 /* Style the input container */
 .topnav .search-container {
   float: centre;
-  margin-left: 50%;
-  max-width: 300px;
+  margin-left: 100%;
+  max-width: 40px;
+}
+
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Style the input field inside the navbar */
 .topnav input[type=text] {
-  margin-left: 0%;
-  margin-right: 50%;
+  margin-left: 25%;
+  margin-right:25%;
   padding: 0px;
   margin-top: 8px;
   font-size: 17px;
-  border: 10px;
+  border: 5px;
   background-color: rgb(40, 118, 141);
 }
 
 /* Style the button inside the input container */
 .topnav .search-container button {
- float:right;
+ float:left;
   padding: 6px;
   background: #ddd;
   font-size: 17px;
@@ -184,7 +192,10 @@ footer {
         <a>freemail</a>
         <div class="topnav-right">
           <a>logout</a>
-        <div class="search-container">
+        </div>
+        <div class="topnav-centered">
+          <div class="search-container">
+          </div>
           <form action="/action_page.php">
             <input type="text" placeholder="Search.." name="search">
             <button type="submit">Submit</button>
