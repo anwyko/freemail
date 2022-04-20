@@ -9,7 +9,7 @@ def create_email(sender, receiver, title, body):
     email = Email(sender, receiver, title, body)
     
 def send_email():
-    msg = Message("Hey", sender = "info2601@accesstt.com", recipients = ["anwyko.trim@gmail.com"])
+    msg = Message("Hey", sender = "info2601@accesstt.com", recipients = ["nevalasingh29@outlook.com"])
     msg.body = "Test email"
     mail.send(msg)
 
