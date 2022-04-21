@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
   <head>
-  
+
+    <!--Import local css stylesheet-->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!--Import local java script sheet-->
+    <script src="{{ url_for('static', filename='templatefunctions.js') }}"></script>
      <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>freemail</title>
@@ -14,41 +15,45 @@
   </head>
 
     <body>
-    
-      <div class="topnav">
-        <a href="/"> freemail</a> 
+  
+      <header class = "navbar">
+        <img class ="Logo" src="{{ url_for('static', filename='images/Logo.png') }}" width = "7%" height = "7%" alt =""></img>
+          <nav>
 
-        <div class="topnav-right">
-          <a>logout</a>
-        </div>
-        
-        <div class="topnav-centered">
-          <div class="search-container">
-          </div>
-          <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
+            <div class="center">
+              <div class="search-container">
+              </div>
+              <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit">Submit</button>
+              </form>
+            </div>
 
+          </nav>
+      </header>
 
       </div>
     <div class="vertical-menu">
-      <a href="#">List</a>
-      <a href="#">Contact</a>
-      <a href="#">Sent</a>
-      <a href="#">Draft</a>
-      <a href="#">Account</a>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Create</button>
-    <div class="dropdown-content">
-      <a href="#">Email</a>
-      <a href="#">Contact</a>
-      <a href="#">List</a>
+      <ul>
+      <li><a href="#">List</a>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Sent</a></li>
+      <li><a href="#">Draft</a></li>
+      <li><a href="#">Account</a></li>
+      <li>
+        <div class="dropdown">
+          <button onclick="CreateResponse()" class="dropbtn">Dropdown</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+    </li>
+    </ul>
     </div>
-  </div>
+
+
    </body>
    <footer>
     <p>Copyright 2022, FreeMail LTD. All Rights Reserved </p>
