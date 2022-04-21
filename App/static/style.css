@@ -296,32 +296,37 @@ background-color: rgb(228 228 228 / 15%);
 /* Display area css (container for all necessary information */
 .display-area{
   float: inline-start;
-  background-color: white;
   position: relative;
   margin-top: 10px;
   margin-left: 13vw;
   z-index: 2;
-
+  background-color: white;
+  
   border-radius: 50px;
 
-  padding: 4%;
+  padding: 0;
 min-width: 10%;
  height: 86vh;
  width: 85.5vw;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
 }
 
+.display-area #display-bg-img{
+  position: absolute;
+  height: 100%;
+  width: 30.5vw;
+  border-radius: 0px 50px 50px 0px ;
+  margin-left: 55vw;
 
-footer p{
-  color: white !important;
+  background-image: url("images/pexels-pixabay-34514.jpg");
+  background-size: cover;
+
   opacity: .5;
-  font-family: 'Monsterrat', sans-serif;
-  position: fixed !important;
-  padding: 0px !important;
-  bottom: 0;
-  width: 100% !important;
-  text-align: center;
-  font-size: 12px !important;
-  /* Height of the footer*/ 
-  height: 20px !important;
+}
+
+.display-area #words p {
+  font: 100px bold;
+  padding: 20px;
+  margin-left: 20px;
+
 }
