@@ -1,110 +1,197 @@
 
-   * {box-sizing: border-box;}
+  /* fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@600&display=swap');
+  
+
+  html{
+    min-height: 100%;
+    /*background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);*/
+    background: rgb(0,36,35);
+    background-image: linear-gradient(-45deg, rgba(149,104,144,1) 28%, rgba(39,184,182,1) 72%, rgba(69,191,215,1) 91%);
+    background-size: 400% 400%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation: gradient 15s ease infinite;
+    }
+  
+    @keyframes gradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+  
+  * :not(footer){
+     box-sizing: border-box;
+     font-family: 'Monsterrat', sans-serif;
+     font-size: 18px;
+     margin: 0;
+     padding: 0;
+    }
 
 
 /* Style the navbar */
-.navbar{
+ header{
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0%;
+  padding-top: 10px;
+  margin-bottom: 5px;
+  background: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+}
+
+#freemail{
+  color: black !important;
+  font-size: 20px !important;
+  font-family: 'Overpass' !important;
+  padding-left: 16px;
+  text-decoration: none;
+}
+  
+.navbar{  
+  padding-top: 5%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 
-/* Style the input container */
-.navbar .search-container {
-  float: centre;
-  margin-left: 100%;
-  max-width: 40px;
-}
-
-.topnav-centered a {
-  float: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Style the input field inside the navbar */
-.navbar input[type=text] {
-  margin-left: 25%;
-  margin-right:25%;
-  padding: 0px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: 5px;;
+.Logo{
+  filter: grayscale(100%);
+  filter:brightness(20%);
 }
 
 /* Style the button inside the input container */
-.navbar .search-container button {
- float:left;
+.navbar .search-container {
+  display: inline-block;
   padding: 6px;
-  background: #ddd;
   font-size: 17px;
   border: none;
   cursor: pointer;
 }
 
-.navbar .search-container button:hover {
-  background: #ccc;
-
+#search{
+  padding-left: 20px;
 }
+
+#logout{
+  padding-right: 15px;
+}
+.navbar .search-container form {
+  float: left;
+}
+
+.navbar .search-container form input{
+  background-color: transparent;
+  border: none;
+}
+
+.navbar .search-container form input:focus{
+  outline: none;
+}
+
+ ::placeholder{
+  color: rgb(131, 131, 131);
+  opacity: .7;
+  text-align: center;
+}
+
+
+/*  variable font stylesheet css */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
+
 
 /* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
 @media screen and (max-width: 600px) {
-  .navbar .search-container {
-    float:none;
-  }
-
-  .tnavbar a, .navbar input[type=text], .navbar .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 50%;
-    margin: 0;
-    padding: 14px;
-  }
-  .navbar input[type=text] {
-    border: 1px solid rgb(124, 47, 187);
-  }
 }
 
+
+.inner-layout{
+  display: flex;
+  position: relative;
+}
+
+#bg-text p{
+  font-size: 500px;
+  opacity: .09;
+}
 .vertical-menu {
-  width: 200px; 
-
+  position: fixed;
+  z-index: 1;
+  width: 200px;
+  height: 100%;
+  font-family: 'Monsterrat', sans-serif;
+  font-size: 18px;
+  text-align: center;
 }
+
+#menu-gradient{
+  position: absolute;
+  z-index: 0;
+  width: 200px;
+  height: 85.5%;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-radius: 25px;
+  -webkit-backdrop-filter: blur(8px);  /* Safari 9+ */
+backdrop-filter: blur(8px); /* Chrome and Opera */
+box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+background-color: rgb(228 228 228 / 15%); 
+}
+
+
+
+#listing{
+  position: relative;
+  list-style: none;
+  text-decoration: none;
+  top: 80px;
+}
+
 
 .vertical-menu a {
-  background-color: rgb(248, 244, 244); 
+  margin-left: 10px;
+  position: relative;
   color: rgb(0, 0, 0);
   display: block; 
-  padding: 12px; 
+  padding: 15px; 
   text-decoration: none; 
 }
 
 .vertical-menu a:hover {
-  background-color: #ccc; /* Dark grey background on mouse-over */
-}
-
-.vertical-menu a.active {
-  background-color: #04AA6D; /* Add a green color to the "active/current" link */
-  color: white;
+  color: white; /* Dark grey background on mouse-over */
 }
 
 
 
-dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
+/* deals with the drop button */
+.dropbtn {
+  text-align: left;
+  padding: 15px !important;
+  font-size: 18px;
   border: none;
   cursor: pointer;
+  background-color: transparent !important;
 }
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+  color: white;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -117,7 +204,7 @@ dropbtn {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  border-radius: 15px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -132,32 +219,43 @@ dropbtn {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
+.dropdown-content a:hover {background-color: transparent}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-footer {
+.display-area{
+  background-color: white;
   position: fixed;
-  padding: 10px 10px 10px 10px;
+  margin-top: 10px;
+  margin-left: 17.8%;
+
+  border-radius: 50px;
+
+
+  padding-top: 30%;
+  padding-bottom: 15.5%;
+  padding-right: 38%;
+  padding-left: 43%;
+
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+footer p{
+  color: white !important;
+  opacity: .5;
+  font-family: 'Monsterrat', sans-serif;
+  position: fixed !important;
+  padding: 0px !important;
   bottom: 0;
-  width: 100%;
+  width: 100% !important;
   text-align: center;
-  font-size: 12px;
+  font-size: 12px !important;
   /* Height of the footer*/ 
-  height: 50px;
-  background: rgb(255, 255, 255);
+  height: 20px !important;
 }

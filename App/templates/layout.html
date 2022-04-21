@@ -8,6 +8,8 @@
     <script src="{{ url_for('static', filename='templatefunctions.js') }}"></script>
      <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Variable icon font-->
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>freemail</title>
@@ -15,26 +17,42 @@
   </head>
 
     <body>
-  
-      <header class = "navbar">
-        <img class ="Logo" src="{{ url_for('static', filename='images/Logo.png') }}" width = "7%" height = "7%" alt =""></img>
-          <nav>
 
-            <div class="center">
+
+      <header>
+      <div class = "navbar">
+
+
+          <a id = "freemail" href="#">freemail</a>
+        <!--<img class ="Logo" src="{{ url_for('static', filename='images/Logo.png') }}" width = "6.5%" height = "6.5%" alt =""></img>-->
+            
               <div class="search-container">
-              </div>
+                <span id = "search" class="material-symbols-outlined"> search </span>
               <form action="/action_page.php">
                 <input type="text" placeholder="Search.." name="search">
-                <button type="submit">Submit</button>
               </form>
             </div>
-
-          </nav>
+         
+            <span id = "logout" class="material-symbols-outlined">
+              logout
+              </span>
+    
+      </div>
       </header>
 
+
       </div>
+
+      <section class= "inner-layout">
+<div id = "bg-text">
+  <p>freem</p>
+</div>
+
+
     <div class="vertical-menu">
-      <ul>
+      <div id="menu-gradient"></div>
+
+      <ul id = "listing">
       <li><a href="#">List</a>
       <li><a href="#">Contact</a></li>
       <li><a href="#">Sent</a></li>
@@ -42,7 +60,9 @@
       <li><a href="#">Account</a></li>
       <li>
         <div class="dropdown">
-          <button onclick="CreateResponse()" class="dropbtn">Dropdown</button>
+          <button onclick="CreateResponse()" class="dropbtn"><span class="material-symbols-outlined">
+            add_box
+            </span></button>
           <div id="myDropdown" class="dropdown-content">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -54,9 +74,17 @@
     </div>
 
 
-   </body>
-   <footer>
-    <p>Copyright 2022, FreeMail LTD. All Rights Reserved </p>
-  </footer>
+    <div class="display-area">
+
+    </div>
+
+
+  </section>
+    <!--<footer>
+      <p>Copyright 2022, FreeMail LTD. All Rights Reserved </p>
+    </footer>-->
+
+</body>
+
       </html>
       
