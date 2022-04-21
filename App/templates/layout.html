@@ -27,10 +27,15 @@
         <!--<img class ="Logo" src="{{ url_for('static', filename='images/Logo.png') }}" width = "6.5%" height = "6.5%" alt =""></img>-->
             
               <div class="search-container">
+                <div id="nav-rounded-corners">
+                
+                <!-- Icon -->
                 <span id = "search" class="material-symbols-outlined"> search </span>
+
               <form action="/action_page.php">
                 <input type="text" placeholder="Search.." name="search">
               </form>
+            </div>
             </div>
          
             <span id = "logout" class="material-symbols-outlined">
@@ -44,25 +49,22 @@
       </div>
 
       <section class= "inner-layout">
-<div id = "bg-text">
-  <p>freem</p>
-</div>
 
 
     <div class="vertical-menu">
       <div id="menu-gradient"></div>
 
       <ul id = "listing">
-      <li><a href="#">List</a>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Sent</a></li>
-      <li><a href="#">Draft</a></li>
-      <li><a href="#">Account</a></li>
+      <li><a id = "List" href="#">  List</a>
+      <li><a id = "Contact" href="#"> Contact</a></li>
+      <li><a id = "Sent" href="#">  Sent</a></li>
+      <li><a id = "Draft" href="#">  Draft</a></li>
+      <li><a id = "Account" href="#"> Account</a></li>
       <li>
+
         <div class="dropdown">
-          <button onclick="CreateResponse()" class="dropbtn"><span class="material-symbols-outlined">
-            add_box
-            </span></button>
+          <button onclick="CreateResponse()" class="dropbtn"> Create </button>
+
           <div id="myDropdown" class="dropdown-content">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -74,9 +76,7 @@
     </div>
 
 
-    <div class="display-area">
-
-    </div>
+    <div class="display-area"> </div>
 
 
   </section>
