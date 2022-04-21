@@ -7,7 +7,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: darkslategrey;
 }
 
 
@@ -27,18 +26,17 @@
 }
 
 /* Style the input field inside the navbar */
-.topnav input[type=text] {
+.navbar input[type=text] {
   margin-left: 25%;
   margin-right:25%;
   padding: 0px;
   margin-top: 8px;
   font-size: 17px;
-  border: 5px;
-  background-color: rgb(40, 118, 141);
+  border: 5px;;
 }
 
 /* Style the button inside the input container */
-.topnav .search-container button {
+.navbar .search-container button {
  float:left;
   padding: 6px;
   background: #ddd;
@@ -47,18 +45,18 @@
   cursor: pointer;
 }
 
-.topnav .search-container button:hover {
+.navbar .search-container button:hover {
   background: #ccc;
 
 }
 
 /* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
 @media screen and (max-width: 600px) {
-  .topnav .search-container {
+  .navbar .search-container {
     float:none;
   }
 
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
+  .tnavbar a, .navbar input[type=text], .navbar .search-container button {
     float: none;
     display: block;
     text-align: left;
@@ -66,7 +64,7 @@
     margin: 0;
     padding: 14px;
   }
-  .topnav input[type=text] {
+  .navbar input[type=text] {
     border: 1px solid rgb(124, 47, 187);
   }
 }
