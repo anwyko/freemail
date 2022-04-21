@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
   <title>freemail</title>
 
   </head>
@@ -23,7 +30,7 @@
       <div class = "navbar">
 
 
-          <a id = "freemail" href="#">freemail</a>
+          <a id = "freemail" href="#">freemail.</a>
         <!--<img class ="Logo" src="{{ url_for('static', filename='images/Logo.png') }}" width = "6.5%" height = "6.5%" alt =""></img>-->
             
               <div class="search-container">
@@ -55,15 +62,15 @@
       <div id="menu-gradient"></div>
 
       <ul id = "listing">
-      <li><a id = "List" href="#">  List</a>
-      <li><a id = "Contact" href="#"> Contact</a></li>
-      <li><a id = "Sent" href="#">  Sent</a></li>
-      <li><a id = "Draft" href="#">  Draft</a></li>
-      <li><a id = "Account" href="#"> Account</a></li>
+      <li><a id = "List" href="#"><i class="bi bi-list"></i>  List</a>
+        <li><a id = "Sent" href="#"><i class="bi bi-arrow-right-short"></i> Sent</a></li>
+      <li><a id = "Contact" href="#"><i class="bi bi-telephone"></i> Contact</a></li>
+      <li><a id = "Draft" href="#"><i class="bi bi-envelope-open"></i>  Draft</a></li>
+      <li><a id = "Account" href="#"><i class="bi bi-gear"></i> Account</a></li>
       <li>
 
         <div class="dropdown">
-          <button onclick="CreateResponse()" class="dropbtn"> Create </button>
+          <button onclick="CreateResponse()" class="dropbtn"><i class="bi bi-plus"></i> Create </button>
 
           <div id="myDropdown" class="dropdown-content">
             <a href="#home">Home</a>
@@ -72,8 +79,14 @@
           </div>
         </div>
     </li>
-    </ul>
-    </div>
+    
+      <div id="current-date">
+        <p id = "day">  </p>
+      </div>
+  </ul>
+
+
+    </div> <!-- end of menu -->
 
 
     <div class="display-area"> </div>
