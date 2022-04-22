@@ -302,7 +302,6 @@ background-color: rgb(228 228 228 / 15%);
   margin-top: 10px;
   margin-left: 13vw;
   z-index: 2;
-  background-color: rgb(240, 236, 217);
   
   border-radius: 50px;
 
@@ -310,7 +309,9 @@ background-color: rgb(228 228 228 / 15%);
 min-width: 10%;
  height: 86vh;
  width: 85.5vw;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+
+ background: radial-gradient(circle, rgba(36,36,36,1) 23%, rgba(36,36,36,1) 75%, rgba(31,31,31,1) 97%, rgba(0,0,0,1) 100%);
+  box-shadow:(8px 8px 16px 8px rgba(0,0,0,0.4));
 }
 
 .display-area #display-bg-img{
@@ -337,15 +338,37 @@ min-width: 10%;
 
 .display-area #header {
   font-family: 'Cabin', sans-serif;
-  font: 80px bold;
-  padding: 20px;
+  font: 70px bold;
+  padding: 10px;
   margin-left: 20px;
+  margin-top: 10px;
 }
 
 #display-area-content p{
-margin-left: 30px;
+margin-left: 35px;
+color: white;
+
 }
 
 #display-area-content span{
 font-family: 'Overpass' !important;
+background: -webkit-linear-gradient(-45deg, rgba(149,104,144,1) 28%, rgba(39,184,182,1) 72%, rgba(69,191,215,1) 91%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-size: 400% 400%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  animation: gradient 11s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
