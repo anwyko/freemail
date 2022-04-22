@@ -280,10 +280,11 @@ background-color: rgb(228 228 228 / 15%);
   animation: gradient 11s ease infinite;
 }
 .vertical-menu #current-date #day{
-  margin-top: 12px;
+  margin-top: 1px;
   margin-left: 10px;
   font-size: 100px;
   opacity: .3;
+  padding: 0;
 
 }
 
@@ -291,6 +292,9 @@ background-color: rgb(228 228 228 / 15%);
  font-size: 19px;
  opacity: .2;
 margin-left: 10px;
+margin-top: 10px;
+margin-bottom: -10px;
+padding: 0;
 }
 
 
