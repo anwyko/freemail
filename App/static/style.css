@@ -295,12 +295,14 @@ background-color: rgb(228 228 228 / 15%);
 }
 /* Display area css (container for all necessary information */
 .display-area{
-  float: inline-start;
   position: relative;
+  display: inline-block;
+  overflow: hidden;
+
   margin-top: 10px;
   margin-left: 13vw;
   z-index: 2;
-  background-color: white;
+  background-color: rgb(240, 236, 217);
   
   border-radius: 50px;
 
@@ -320,13 +322,21 @@ min-width: 10%;
 
   background-image: url("images/pexels-pixabay-34514.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.1);
 
   opacity: .5;
+  transition: all 1s
 }
 
+.display-area #display-bg-img:hover{
+  transform: scale(1.1)
+}
+
+
 .display-area #words p {
-  font: 100px bold;
+  font: 95px bold;
   padding: 20px;
   margin-left: 20px;
-
 }

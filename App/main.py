@@ -18,6 +18,7 @@ from App.controllers import *
 # )
 
 from App.views import (
+    nav_views,
     user_views,
     email_views,
     list_views,
@@ -28,11 +29,12 @@ from App.views import (
 from App.models import *
 
 views = [
+    nav_views,
     user_views,
     email_views,
     list_views,
     recipient_views,
-    api_views
+    api_views,
 ]
 
 def add_views(app, views):
