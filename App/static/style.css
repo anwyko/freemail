@@ -282,7 +282,7 @@ background-color: rgb(228 228 228 / 15%);
 .vertical-menu #current-date #day{
   margin-top: 1px;
   margin-left: 10px;
-  font-size: 100px;
+  font-size: 120px;
   opacity: .3;
   padding: 0;
 
@@ -293,7 +293,7 @@ background-color: rgb(228 228 228 / 15%);
  opacity: .2;
 margin-left: 10px;
 margin-top: 10px;
-margin-bottom: -10px;
+margin-bottom: -20px;
 padding: 0;
 }
 
@@ -312,6 +312,7 @@ padding: 0;
       background-position: 0% 50%;
   }
 }
+
 /* Display area css (container for all necessary information */
 .display-area{
   position: relative;
@@ -319,7 +320,7 @@ padding: 0;
   overflow: hidden;
 
   margin-top: 10px;
-  margin-left: 13vw;
+  margin-left: 14vw;
   z-index: 2;
   
   border-radius: 50px;
@@ -327,7 +328,7 @@ padding: 0;
   padding: 0;
 min-width: 10%;
  height: 86vh;
- width: 85.5vw;
+ width: 83.5vw;
 
  background: radial-gradient(circle, rgba(36,36,36,1) 23%, rgba(36,36,36,1) 75%, rgba(31,31,31,1) 97%, rgba(0,0,0,1) 100%);
   box-shadow:(8px 8px 16px 8px rgba(0,0,0,0.4));
@@ -357,7 +358,7 @@ min-width: 10%;
 
 .display-area #header {
   font-family: 'Cabin', sans-serif;
-  font: 70px bold;
+  font: 68px bold;
   padding: 10px;
   margin-left: 20px;
   margin-top: 10px;

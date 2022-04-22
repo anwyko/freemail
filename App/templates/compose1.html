@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    
+    <title>freemail</title>
+    <style>
+          *{
+        margin: 0px;
+        padding: 0px;
+        list-style:none;
+        box-sizing: border-box;
+        font-family: 'Poppins',sans-serif;
+        } 
+        nav{
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        height: 11vh;
+        background-color: black;
+
+        }
+        .icon{
+        margin-left: 20px ;
+        } 
+        .icon{
+        font-size:35px;
+        letter-spacing:5px;
+        color:#fff;
+        }
+        .option ul{
+        display:flex;
+        align-items:center;
+        }
+        .option ul li a{
+        list-style:none;
+        text-decoration: none;
+        color:#fff;
+        padding: 0.1px 12px;
+        font-size: 15px;
+        letter-spacing: 2px;
+        /* margin-left: 1000px;*/
+        } 
+        .option ul li a:hover{
+        border-bottom: 2px solid #fff;
+        }
+        .search-box{
+        margin-right: 80px;
+        margin-top:40px ;
+
+        }
+        .search-box input[type="text"]{
+        border:none;
+        outline:none;
+        height:30px;
+        width: 250px;
+        border-radius:30px;
+        font-size: 18px;
+        padding-left:8px;
+        color: #fff;
+
+        }  
+        /* Style inputs with type="text", select elements and textareas */
+        input[type=text], select, textarea {
+        width: 100%; /* Full width */
+        padding: 12px; /* Some padding */ 
+        border: 1px solid #ccc; /* Gray border */
+        border-radius: 4px; /* Rounded borders */
+        box-sizing: border-box; /* Make sure that padding and width stays in place */
+        margin-top: 6px; /* Add a top margin */
+        margin-bottom: 16px; /* Bottom margin */
+        resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+        }
+
+        /* Style the submit button with a specific background color etc */
+        input[type=submit] {
+        background-color: black   ;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
+        /* When moving the mouse over the submit button, add a darker green color */
+        input[type=submit]:hover {
+        background-color: grey;
+        }
+
+        /* Add a background color and some padding around the form */
+        .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        }
+    </style>
+     
+  </head>
+
+  <body>
+      <header class = "nav-bar fixed">
+        <nav class="black darken-3">
+            <div class="icon"></div>
+            <a href="layout.html" class="brand-logo">freemail</a>
+            <div class = "option">
+              <ul class="test">
+                <li><a href="#">logout</a></li>
+              </ul>
+            </div>
+            <div class="search-box">
+              <form>
+                <input type="text" placeholder="Search..">
+                <button id="search" type="submit">Search</button>
+              </form>
+            </div>
+            <div class = "burger">
+              <div class = "line1"></div>
+              <div class = "line2"></div>
+              <div class = "line3"></div>
+             
+         </nav>
+      </header>
+      <div class="container">
+        <form action="action_page.php">
+      
+          <label for="email">Recipient List</label>
+          <input type="email"  placeholder="Email..">
+      
+          <label for="subject">Subject</label>
+          <input type="text"  placeholder="Subject..">
+      
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
+      
+          <input type="submit" value="Send Email">
+      
+        </form>
+      </div>
+  </body>

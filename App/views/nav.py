@@ -23,4 +23,8 @@ def get_contact_doc():
 def get_account_doc():
     return render_template('account.html')
 
+@nav_views.route('/compose', methods=['GET'])
+def get_compose_doc():
+    return render_template('compose.html')
+
 
