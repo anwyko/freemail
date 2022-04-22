@@ -115,9 +115,18 @@
         </div>
     </li>
     
+
+
       <div id="current-date">
-        <p id = "day">  </p>
+        <p id="title">date: </p>
+        <p id = "day"> </p>
       </div>
+
+      <script type="text/javascript"> 
+        n =  new Date();
+         d = n.getDate();
+         document.getElementById("day").innerHTML +=  d;
+         </script>
   </ul>
 
 
