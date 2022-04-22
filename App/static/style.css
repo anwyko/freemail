@@ -2,7 +2,7 @@
   /* fonts */
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@600&display=swap');
-  
+  @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 
   html{
     min-height: 100%;
@@ -335,8 +335,17 @@ min-width: 10%;
 }
 
 
-.display-area #words p {
-  font: 95px bold;
+.display-area #header {
+  font-family: 'Cabin', sans-serif;
+  font: 80px bold;
   padding: 20px;
   margin-left: 20px;
+}
+
+#display-area-content p{
+margin-left: 30px;
+}
+
+#display-area-content span{
+font-family: 'Overpass' !important;
 }
