@@ -87,11 +87,11 @@ def uploadFiles():
 def populate_db():
     db.session.add_all([
     User(username="bob", password="bobpass"),
-    Email(subject="subject1", body="body1", status="draft"),
-    Email(subject="subject2", body="body2", status="draft"),
-    Email(subject="subject3", body="body3", status="draft"),
-    Email(subject="subject4", body="body4", status="sent"),
-    Email(subject="subject5", body="body5", status="sent"),
+    Email(list="", subject="subject1", body="body1", status="draft"),
+    Email(list="", subject="subject2", body="body2", status="draft"),
+    Email(list="", subject="subject3", body="body3", status="draft"),
+    Email(list="", subject="subject4", body="body4", status="sent"),
+    Email(list="", subject="subject5", body="body5", status="sent"),
     MailingList(name="name1"),
     MailingList(name="name2"),
     MailingList(name="name3"),

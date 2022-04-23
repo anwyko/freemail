@@ -13,23 +13,22 @@
 
     <div class="row">
       <form id="form">
-        <input name="id" value={{list.id}} hidden>
+        <input name="id" value="" hidden>
 
         <div class="row">
           <label for="name">Name</label><br>
-          <input name="name" type="text"  placeholder="Name.." value={{list.name}}>
+          <input name="name" type="text"  placeholder="Name..">
         </div>
         
         <label for="recipients">Choose recipient(s):</label><br>
         <select name="recipients" id="recipients" multiple>
-          {% for recip in list.recipients %}
-            <option value={{recip.id}}>{{recip.email}}</option>
+          {% for recip in recips %}
+            <option>{{recip.email}}</option>
           {% endfor %}
         </select>
         
         <div class="row">
           <input type="submit" value="Save List">
-          <input type="submit" value="Delete">
         </div>
       </form>
     </div>
@@ -51,9 +50,7 @@
         })
 
         const final = [data, arr];
-
-        if (event.submitter.value === "Save List") {
-          const info = {
+        const info = {
           body: JSON.stringify(final),
           method: 'POST',
           headers: {
@@ -61,16 +58,6 @@
           }
         }
         const res = fetch('/api/lists/create', info);
-        } else {
-          const info = {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-        const res = fetch(`/api/lists/delete/${data.id}`, info);
-        }
-        
       }
     </script>
 {% endblock %}

@@ -1,24 +1,74 @@
-<!doctype html>
-<html>
-  <head>
-  
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
-    <title>freemail</title>
-    <style>
-      p{
-        color: white;
-        margin-top: 50px;
-        margin-left: 30px;
-      }
-    </style>
-     
-  </head>
+{% extends "layout.html" %}
+{% block title %}Email{% endblock %}
 
-  <body>
-     <p>dsadsadsadas</p>
-      
-  </body>
+{{ super() }}
+
+{% block content %}
+    <style>
+        label {
+            color: white;
+            width: 100%;
+        }
+    </style>
+
+    <div class="row">
+      <form id="form">
+        <input name="id" value="" hidden>
+
+        <label for="list">Choose list:</label><br>
+        <select name="list" id="list">
+          {% for list in lists %}
+            <option value={{list.id}}>{{list.name}}</option>
+          {% endfor %}
+        </select>
+        
+        <div class="row">
+          <label for="subject">Subject</label><br>
+          <input name="subject" type="text"  placeholder="Subject..">
+        </div>
+        
+        <div class="row">
+          <label for="message">Message</label><br>
+          <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+        
+        <div class="row">
+          <input type="submit" value="Send Email">
+          <input type="submit" value="Save Draft">
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.forms['form'].addEventListener('submit', sendEmail);
+
+      function sendEmail(event) {
+        event.preventDefault();
+        const myForm = event.target;
+        if (event.submitter.value === "Send Email") {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+          const info = {
+            body: JSON.stringify(data),
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+          const res = fetch('/api/emails/send', info);
+        } else {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+          const info = {
+            body: JSON.stringify(data),
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+          const res = fetch('/api/emails/save', info);
+        }
+        
+      }
+    </script>
+{% endblock %}

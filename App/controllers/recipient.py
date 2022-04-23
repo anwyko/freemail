@@ -6,6 +6,7 @@ def create_recipient(firstName, lastName, email):
     recipient = Recipient(firstName=firstName, lastName=lastName, email=email)
     db.session.add(recipient)
     db.session.commit()
+    return recipient.id
 
 def create_recipients_from_csv(file):
     with open(file) as f:
@@ -48,6 +49,7 @@ def update_recipient(recipientID, firstName, lastName, email):
         return False
     recipient.firstName = firstName
     recipient.lastName = lastName
+    recipient.email = email
     db.session.add(recipient)
     db.session.commit()
     return True

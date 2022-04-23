@@ -5,24 +5,74 @@
 
 {% block content %}
     <style>
-        td, th {
+        label {
             color: white;
+            width: 100%;
         }
     </style>
 
     <div class="row">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th><th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>{{email.id}}</td>
-              <td>{{email.subject}}</td>
-            </tr>
-        <tbody>
-      </table>
+      <form id="form">
+        <input name="id" value={{email.id}} hidden>
+
+        <label for="list">Choose list:</label><br>
+        <select name="list" id="list">
+            <option value={{email.mailingListID}}>{{email.mailingList.name}}</option>
+        </select>
+        
+        <div class="row">
+          <label for="subject">Subject</label><br>
+          <input value={{email.subject}} name="subject" type="text"  placeholder="Subject..">
+        </div>
+        
+        <div class="row">
+          <label for="message">Message</label><br>
+          <textarea id="message" name="message" placeholder="Write something.." style="height:200px">{{email.body}} </textarea>
+        </div>
+        
+        <div class="row">
+          <input type="submit" value="Send Email">
+          <input type="submit" value="Save Draft">
+          <input type="submit" value="Delete">
+        </div>
+      </form>
     </div>
+
+    <script>
+      document.forms['form'].addEventListener('submit', sendEmail);
+
+      function sendEmail(event) {
+        event.preventDefault();
+        const myForm = event.target;
+        const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+        if (event.submitter.value === "Send Email") { 
+          const info = {
+            body: JSON.stringify(data),
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+          const res = fetch('/api/emails/send', info);
+        } else if (event.submitter.value === "Save Draft") {
+          const info = {
+            body: JSON.stringify(data),
+            method: 'UPDATE',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+          const res = fetch('/api/emails/update', info);
+        } else {
+          const info = {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+          const res = fetch(`/api/emails/delete/${data.id}`, info);
+        }
+      }
+    </script>
 {% endblock %}

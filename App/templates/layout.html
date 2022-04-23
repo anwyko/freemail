@@ -25,7 +25,19 @@
   </head>
 
     <body>
-      
+      {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <nav class="white black-text" style="padding: 10px">
+      <div class="nav-wrapper">
+          <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+      </div>
+    </nav>
+    {% endif %}
+    {% endwith %}
 
       <header>
       <div class = "navbar">
@@ -115,9 +127,9 @@
           <button onclick="CreateResponse()" class="dropbtn"><i class="bi bi-plus"></i> Create </button>
 
           <div id="myDropdown" class="dropdown-content">
-            <a id="Compose" href="/compose">Compose</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a id="Compose" href="/emails/compose">Email</a>
+            <a href="/lists/create">List</a>
+            <a href="/recipients/create">Recipient</a>
           </div>
         </div>
     </li>

@@ -6,7 +6,11 @@
 {% block content %}
     <style>
         td, th {
+            text-align: center;
             color: white;
+        }
+        table:hover {
+          cursor: pointer;
         }
     </style>
 
@@ -20,11 +24,26 @@
         <tbody>
           {% for list in lists %}
             <tr>
-              <td>{{list.id}}</td>
-              <td>{{list.name}}</td>
+              <td value={{list.id}}>{{list.id}}</td>
+              <td value={{list.id}}>{{list.name}}</td>
             </tr>
           {% endfor %}
         <tbody>
       </table>
     </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const rows = document.querySelectorAll("tr");
+        rows.forEach(row => {
+          row.addEventListener("click", open);
+      })
+      });
+
+      function open(event) {
+        const id = event.target.getAttribute("value");
+        window.location.href = `/lists/${id}`;
+      }
+      
+    </script>
 {% endblock %}

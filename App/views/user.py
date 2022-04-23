@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request, send_from_directory
+from flask import Blueprint, render_template, jsonify, request, send_from_directory, flash, redirect
 from flask_jwt import jwt_required
 
 
@@ -42,3 +42,11 @@ def get_users_api():
 @user_views.route('/api/users/<id>')
 def get_user_api(id):
     return get_user_json(id)
+
+@user_views.route('/api/users/update', methods=['UPDATE'])
+def save_user_api():
+    # data = request.get_json()
+    # update_user(data['id'], data['firstName'], data['lastName'], data['email'])
+    # flash("Account updated")
+    # return render_template('account.html')
+    return render_template('index.html')
