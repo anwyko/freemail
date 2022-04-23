@@ -5,20 +5,40 @@
 
 {% block content %}
     <style>
+
+        table{
+          margin-top: 5%;
+          margin-left: 0%; 
+          border: 1px solid #ddd;
+        }
+
+        tr{
+          border: 1px solid #ddd;
+        }
+
+    
         td, th {
             text-align: center;
-            color: white;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(80, 135, 197);
+            padding-left: 100px;
         }
+
+        th{
+          color: blueviolet;
+        }
+
         table:hover {
           cursor: pointer;
         }
+
     </style>
 
     <div class="row">
       <table>
         <thead>
           <tr>
-            <th>ID</th><th>Name</th>
+            <th>ID</th><th>Name</th><th>Email</th><th>List</th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +46,8 @@
             <tr>
               <td value={{recip.id}}>{{recip.id}}</td>
               <td value={{recip.id}}>{{recip.email}}</td>
+              <td></td>
+              <td></td>
             </tr>
           {% endfor %}
         <tbody>

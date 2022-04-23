@@ -5,20 +5,34 @@
 
 {% block content %}
     <style>
+       table{
+          margin-top: 5%;
+          margin-left: 0%;
+        }
+        
         td, th {
             text-align: center;
-            color: white;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(80, 135, 197);
+            padding-left: 100px;
+        }
+
+        th{
+          color: blueviolet;
+        
         }
         table:hover {
           cursor: pointer;
         }
+
+        
     </style>
 
     <div class="row">
       <table>
         <thead>
           <tr>
-            <th>ID</th><th>Name</th>
+            <th>ID</th><th>Name</th><th>MailingListID</th><th>Subject</th>
           </tr>
         </thead>
         <tbody>
