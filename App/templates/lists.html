@@ -18,13 +18,12 @@
       <table>
         <thead>
           <tr>
-            <th>ID</th><th>Name</th>
+            <th>Name</th>
           </tr>
         </thead>
         <tbody>
           {% for list in lists %}
             <tr>
-              <td value={{list.id}}>{{list.id}}</td>
               <td value={{list.id}}>{{list.name}}</td>
             </tr>
           {% endfor %}

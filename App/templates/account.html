@@ -10,7 +10,19 @@
             width: 100%;
         }
     </style>
-
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<nav class="white black-text" style="padding: 10px">
+  <div class="nav-wrapper">
+      <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+  </div>
+</nav>
+{% endif %}
+{% endwith %}
     <div class="row">
       <form id="form">
         <input name="id" value={{user.id}} hidden>
@@ -23,6 +35,11 @@
         <div class="row">
           <label for="lastName">Last Name</label><br>
           <input value={{user.lastName}} name="lastName" type="text"  placeholder="Last name..">
+        </div>
+
+        <div class="row">
+          <label for="userame">Username</label><br>
+          <input value={{user.username}} name="username" type="text"  placeholder="Username..">
         </div>
         
         <div class="row">
@@ -38,8 +55,8 @@
 
     <script>
       document.forms['form'].addEventListener('submit', update);
-
-      function update(event) {
+      
+      async function update(event) {
         event.preventDefault();
         const myForm = event.target;
         const formData = new FormData(form);
@@ -48,10 +65,14 @@
             body: JSON.stringify(data),
             method: 'UPDATE',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
             }
           }
-          const res = fetch('/api/users/update', info);
+          const res = await fetch('/api/users/update', info);
+          if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
         
       }
     </script>

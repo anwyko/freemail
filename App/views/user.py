@@ -45,8 +45,7 @@ def get_user_api(id):
 
 @user_views.route('/api/users/update', methods=['UPDATE'])
 def save_user_api():
-    # data = request.get_json()
-    # update_user(data['id'], data['firstName'], data['lastName'], data['email'])
-    # flash("Account updated")
-    # return render_template('account.html')
+    data = request.get_json()
+    res = update_user(data['id'], data['firstName'], data['lastName'], data['email'])
+    flash("Account updated")
     return render_template('index.html')

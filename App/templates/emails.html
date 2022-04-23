@@ -18,14 +18,15 @@
       <table>
         <thead>
           <tr>
-            <th>ID</th><th>Name</th>
+            <th>Subject</th><th>Message</th><th>Date</th>
           </tr>
         </thead>
         <tbody>
           {% for email in emails[0] %}
-            <tr>
-              <td value={{email.id}}>{{email.id}}</td>
+            <tr></tr>
               <td value={{email.id}}>{{email.subject}}</td>
+              <td value={{email.id}}>{{email.body}}</td>
+              <td value={{email.id}}>{{email.date}}</td>
             </tr>
           {% endfor %}
         <tbody>

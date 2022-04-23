@@ -135,3 +135,5 @@ def populate_db():
     add_recipient_to_list(lists[0].id, recipients[9].id)
     db.session.commit()
 
+    if __name__ == '__main__':
+        app.run(host='0.0.0.0', port=8080, debug=True)

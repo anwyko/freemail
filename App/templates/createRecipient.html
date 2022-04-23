@@ -50,7 +50,7 @@
     <script>
       document.forms['form'].addEventListener('submit', createRecipient);
 
-      function createRecipient(event) {
+      async function createRecipient(event) {
         event.preventDefault();
         const myForm = event.target;
         const formData = new FormData(form);
@@ -62,7 +62,11 @@
             'Content-Type': 'application/json'
           }
         }
-        const res = fetch('/api/recipients/create', info);
+        const res = await fetch('/api/recipients/create', info);
+        if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
       }
     </script>
 {% endblock %}

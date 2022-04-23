@@ -20,7 +20,7 @@
           <input name="name" type="text"  placeholder="Name.." value={{list.name}}>
         </div>
         
-        <label for="recipients">Choose recipient(s):</label><br>
+        <label for="recipients">Recipients:</label><br>
         <select name="recipients" id="recipients" multiple>
           {% for recip in list.recipients %}
             <option value={{recip.id}}>{{recip.email}}</option>
@@ -37,7 +37,7 @@
     <script>
       document.forms['form'].addEventListener('submit', createList);
 
-      function createList(event) {
+      async function createList(event) {
         event.preventDefault();
         const myForm = event.target;
         const formData = new FormData(form);
@@ -60,7 +60,11 @@
             'Content-Type': 'application/json'
           }
         }
-        const res = fetch('/api/lists/create', info);
+        const res = await fetch('/api/lists/create', info);
+        if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
         } else {
           const info = {
           method: 'DELETE',
@@ -68,7 +72,11 @@
             'Content-Type': 'application/json'
           }
         }
-        const res = fetch(`/api/lists/delete/${data.id}`, info);
+        const res = await fetch(`/api/lists/delete/${data.id}`, info);
+        if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
         }
         
       }

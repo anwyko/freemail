@@ -12,10 +12,10 @@
     </style>
 
     <div class="row">
-      <form id="form">
+      <form id="form" action="#">
         <input name="id" value={{email.id}} hidden>
 
-        <label for="list">Choose list:</label><br>
+        <label for="list">List:</label><br>
         <select name="list" id="list">
             <option value={{email.mailingListID}}>{{email.mailingList.name}}</option>
         </select>
@@ -32,21 +32,24 @@
         
         <div class="row">
           <input type="submit" value="Send Email">
-          <input type="submit" value="Save Draft">
+          {% if email.status == "draft" %}
+            <input type="submit" value="Save Draft">
+          {% endif %}
           <input type="submit" value="Delete">
         </div>
       </form>
     </div>
 
     <script>
+      
       document.forms['form'].addEventListener('submit', sendEmail);
 
-      function sendEmail(event) {
+      async function sendEmail(event) {
         event.preventDefault();
         const myForm = event.target;
-        const formData = new FormData(form);
+        if (event.submitter.value === "Send Email") {
+          const formData = new FormData(form);
           const data = Object.fromEntries(formData);
-        if (event.submitter.value === "Send Email") { 
           const info = {
             body: JSON.stringify(data),
             method: 'POST',
@@ -54,25 +57,29 @@
               'Content-Type': 'application/json'
             }
           }
-          const res = fetch('/api/emails/send', info);
-        } else if (event.submitter.value === "Save Draft") {
-          const info = {
-            body: JSON.stringify(data),
-            method: 'UPDATE',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
-          const res = fetch('/api/emails/update', info);
-        } else {
+          document.body.style.cursor = 'wait';
+          const res = await fetch('/api/emails/send', info);
+          document.body.style.cursor = 'default';
+          if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
+        }  else {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
           const info = {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json'
             }
           }
-          const res = fetch(`/api/emails/delete/${data.id}`, info);
+          const res = await fetch(`/api/emails/delete/${data.id}`, info);
+          if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
         }
+
       }
     </script>
 {% endblock %}
