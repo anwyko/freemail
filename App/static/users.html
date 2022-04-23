@@ -9,7 +9,6 @@
             color: white;
             width: 100%;
         }
-
     </style>
 
     <div class="row">
@@ -32,7 +31,7 @@
         </div>
         
         <div class="row">
-          <input type="submit" value="Save">
+          <input type="submit" value="Save Draft">
         </div>
       </form>
     </div>
@@ -47,12 +46,12 @@
           const data = Object.fromEntries(formData);
           const info = {
             body: JSON.stringify(data),
-            method: 'UPDATE',
+            method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             }
           }
-          const res = fetch('/api/users/update', info);
+          const res = fetch('/api/emails/send', info);
         
       }
     </script>

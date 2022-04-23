@@ -11,7 +11,8 @@ class Email(db.Model):
     status = db.Column(db.String(10))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
 
-    def __init__(self, subject, body, status):
+    def __init__(self, list, subject, body, status):
+        self.mailingListID = list
         self.subject = subject
         self.body = body
         self.status = status

@@ -6,7 +6,7 @@
 {% block content %}
     <style>
         label {
-            color: rgb(253, 251, 251);
+            color: white;
             width: 100%;
         }
         p {
@@ -19,8 +19,8 @@
           padding-left: 10px;
           padding-right: 10px;
           background: linear-gradient(115deg, #591aa1 10%, rgba(156, 145, 207, 0.067));
-          width:1000px;
-          margin-top: 1%;
+          width: 1000px;;
+          margin-top: 2%;
           margin-left: 5%;
         }
 
@@ -44,17 +44,6 @@
   box-sizing: border-box;
 }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #19a6be;
-  color: white;
-  padding: 14px 10px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 0px;
-  cursor: pointer;
-}
-
 input[name=email], select{
   width: 100%;
   padding: 12px 20px;
@@ -65,7 +54,19 @@ input[name=email], select{
   box-sizing: border-box;
 }
 
-       
+input[type=submit] {
+  width: 100%;
+  background-color: #19a6be;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
     </style>
 
     <div class="row">
@@ -75,27 +76,28 @@ input[name=email], select{
         <p><input type="submit" value="Submit"></p>
       </form>
 
+    
+
       <form id="form">
-        <input name="id" value={{recip.id}} hidden>
+        <input name="id" value="" hidden>
 
         <div class="row">
           <label for="firstName">First Name</label><br>
-          <input value={{recip.firstName}} name="firstName" type="text"  placeholder="First Name..">
+          <input name="firstName" type="text"  placeholder="First Name..">
         </div>
         
         <div class="row">
           <label for="lastName">Last Name</label><br>
-          <input value={{recip.lastName}} name="lastName" type="text"  placeholder="Last Name..">
+          <input name="lastName" type="text"  placeholder="Last Name..">
         </div>
         
         <div class="row">
           <label for="email">Email</label><br>
-          <input value={{recip.email}} id="email" name="email" placeholder="Email address..">
+          <input id="email" name="email" placeholder="Email address..">
         </div>
         
         <div class="row">
           <input type="submit" value="Save Recipient">
-          <input type="submit" value="Delete">
         </div>
       </form>
     </div>
@@ -108,9 +110,7 @@ input[name=email], select{
         const myForm = event.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
-
-        if (event.submitter.value === "Save Recipient") {
-          const info = {
+        const info = {
           body: JSON.stringify(data),
           method: 'POST',
           headers: {
@@ -118,16 +118,6 @@ input[name=email], select{
           }
         }
         const res = fetch('/api/recipients/create', info);
-        } else {
-          const info = {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-        const res = fetch(`/api/recipients/delete/${data.id}`, info);
-        }
-        
       }
     </script>
 {% endblock %}

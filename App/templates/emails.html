@@ -1,22 +1,15 @@
 {% extends "layout.html" %}
-{% block title %}Sent{% endblock %}
+{% block title %}{{emails[1]}}{% endblock %}
 
 {{ super() }}
 
 {% block content %}
     <style>
-
-        table{
+       table{
           margin-top: 5%;
-          margin-left: 0%; 
-          border: 1px solid #ddd;
+          margin-left: 0%;
         }
-
-        tr{
-          border: 1px solid #ddd;
-        }
-
-    
+        
         td, th {
             text-align: center;
             font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -26,28 +19,27 @@
 
         th{
           color: blueviolet;
+        
         }
-
         table:hover {
           cursor: pointer;
         }
 
+        
     </style>
 
     <div class="row">
       <table>
         <thead>
           <tr>
-            <th>ID</th><th>Name</th><th>Email</th><th>List</th>
+            <th>ID</th><th>Name</th><th>MailingListID</th><th>Subject</th>
           </tr>
         </thead>
         <tbody>
-          {% for recip in recips %}
+          {% for email in emails[0] %}
             <tr>
-              <td value={{recip.id}}>{{recip.id}}</td>
-              <td value={{recip.id}}>{{recip.email}}</td>
-              <td></td>
-              <td></td>
+              <td value={{email.id}}>{{email.id}}</td>
+              <td value={{email.id}}>{{email.subject}}</td>
             </tr>
           {% endfor %}
         <tbody>
@@ -64,7 +56,7 @@
 
       function open(event) {
         const id = event.target.getAttribute("value");
-        window.location.href = `/recipients/${id}`;
+        window.location.href = `/emails/${id}`;
       }
       
     </script>

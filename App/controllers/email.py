@@ -45,17 +45,18 @@ def update_email(emailID, mailingList, subject, body):
     email = Email.query.filter_by(id=emailID).first()
     if email == None:
         return False
-    email.mailingList = mailingList
+    email.mailingListID = mailingList
     email.subject = subject
     email.body = body
     db.session.add(email)
     db.session.commit()
     return True
 
-def create_email(subject, body, status):
-    email = Email(subject, body, status)
+def create_email(list, subject, body, status):
+    email = Email(list, subject, body, status)
     db.session.add(email)
     db.session.commit()
+    return email.id
 
 def add_list_to_email(emailID, listID):
     mlist = MailingList.query.filter_by(id=listID).first()

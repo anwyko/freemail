@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 from flask import Blueprint, redirect, render_template, request, send_from_directory, url_for
 from flask_login import current_user
 from App.controllers import auth
 
 from App.controllers.auth import authenticate, login_user
 
+=======
+from flask import Blueprint, redirect, render_template, request, send_from_directory, flash
+>>>>>>> 432424be47fffc56de1e07913110811ff7f5704a
 
 api_views = Blueprint('api_views', __name__, template_folder='../templates')
 

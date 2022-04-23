@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request, send_from_directory
+from flask import Blueprint, render_template, jsonify, request, send_from_directory, flash
 from flask_jwt import jwt_required
 
 
@@ -12,6 +12,7 @@ from App.controllers import (
     get_all_lists_json,
     update_list,
     delete_list,
+    get_all_recipients,
 )
 
 list_views = Blueprint('list_views', __name__, template_folder='../templates')
@@ -33,4 +34,28 @@ def get_lists_page():
 @list_views.route('/lists/<id>')
 def get_list_page(id):
     list = get_list(id)
-    return render_template('list.html', recipients=list.recipients)
+    return render_template('list.html', list=list)
+
+@list_views.route('/api/lists/create', methods=['POST'])
+def create_list_api():
+    data = request.get_json()
+    if (data[0]['id'] == ""):
+        id = create_list(data[0]['name'])
+        for recip in data[1]:
+            add_recipient_to_list(id, recip)
+        flash("List created")
+    else:
+        update_list(data[0]['id'], data[0]['name'])
+        flash("List updated")
+    return render_template('index.html')
+
+@list_views.route('/api/lists/delete/<id>', methods=['DELETE'])
+def delete_list_api(id):
+    delete_list(id)
+    flash("List deleted")
+    return render_template('index.html')
+
+@list_views.route('/lists/create')
+def get_create_page():
+    recips = get_all_recipients()
+    return render_template('createList.html', recips=recips)

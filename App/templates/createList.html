@@ -6,22 +6,32 @@
 {% block content %}
     <style>
         label {
-          color: rgb(141, 197, 230);
+            color: white;
             width: 100%;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         form{
-          padding-top: 20px;
-          padding-bottom: 10px;
+          padding-top: 5px;
+          padding-bottom: 0px;
           padding-left: 10px;
           padding-right: 10px;
           background: linear-gradient(115deg, #591aa1 10%, rgba(156, 145, 207, 0.067));
-          width:1000px;
-          margin-top: 5%;
+          width: 1000px;
+          margin-top: 2%;
           margin-left: 5%;
         }
 
+        form p{
+          color: rgb(141, 197, 230);
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        label{
+          color: rgb(64, 112, 216);
+          font-family:Arial, Helvetica, sans-serif;
+        }
+
+       
         input[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -36,34 +46,33 @@ input[type=submit] {
   width: 100%;
   background-color: #19a6be;
   color: white;
-  padding: 14px 10px;
+  padding: 14px 20px;
   margin: 8px 0;
   border: none;
-  border-radius: 0px;
+  border-radius: 4px;
   cursor: pointer;
 }
-       
+
     </style>
 
     <div class="row">
       <form id="form">
-        <input name="id" value={{list.id}} hidden>
+        <input name="id" value="" hidden>
 
         <div class="row">
           <label for="name">Name</label><br>
-          <input name="name" type="text"  placeholder="Name.." value={{list.name}}>
+          <input name="name" type="text"  placeholder="Name..">
         </div>
         
         <label for="recipients">Choose recipient(s):</label><br>
         <select name="recipients" id="recipients" multiple>
-          {% for recip in list.recipients %}
-            <option value={{recip.id}}>{{recip.email}}</option>
+          {% for recip in recips %}
+            <option>{{recip.email}}</option>
           {% endfor %}
         </select>
         
         <div class="row">
           <input type="submit" value="Save List">
-          <input type="submit" value="Delete">
         </div>
       </form>
     </div>
@@ -85,9 +94,7 @@ input[type=submit] {
         })
 
         const final = [data, arr];
-
-        if (event.submitter.value === "Save List") {
-          const info = {
+        const info = {
           body: JSON.stringify(final),
           method: 'POST',
           headers: {
@@ -95,16 +102,6 @@ input[type=submit] {
           }
         }
         const res = fetch('/api/lists/create', info);
-        } else {
-          const info = {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-        const res = fetch(`/api/lists/delete/${data.id}`, info);
-        }
-        
       }
     </script>
 {% endblock %}

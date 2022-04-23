@@ -6,6 +6,7 @@ def create_list(name):
     mlist = MailingList(name=name)
     db.session.add(mlist)
     db.session.commit()
+    return mlist.id
 
 def add_recipient_to_list(listID, recipientID):
     mlist = MailingList.query.filter_by(id=listID).first()
@@ -39,7 +40,7 @@ def get_list_json(listID):
     return mlist.toDict()
 
 def delete_list(listID):
-    mlist = mailingList.query.filter_by(id=listID).first()
+    mlist = MailingList.query.filter_by(id=listID).first()
     if mlist == None:
         return False
     db.session.delete(mlist)
@@ -47,7 +48,7 @@ def delete_list(listID):
     return True
 
 def update_list(listID, name):
-    mlist = mlist.query.filter_by(id=listID).first()
+    mlist = MailingList.query.filter_by(id=listID).first()
     if mlist == None:
         return False
     mlist.name = name
