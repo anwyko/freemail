@@ -43,6 +43,7 @@ def get_users_api():
 def get_user_api(id):
     return get_user_json(id)
 
+
 @user_views.route('/api/users/update', methods=['UPDATE'])
 def save_user_api():
     data = request.get_json()
