@@ -41,13 +41,14 @@ def delete_email(emailID):
     db.session.commit()
     return True
 
-def update_email(emailID, mailingList, subject, body):
+def update_email(emailID, mailingList, subject, body, status):
     email = Email.query.filter_by(id=emailID).first()
     if email == None:
         return False
     email.mailingListID = mailingList
     email.subject = subject
     email.body = body
+    email.status = status
     db.session.add(email)
     db.session.commit()
     return True

@@ -34,10 +34,10 @@ def get_email_api(id):
 @email_views.route('/api/emails/send', methods=['POST'])
 def send_email_api():
     data = request.get_json()
-    if (data['id'] == ""):
+    if (data['id'] == "" or data['status'] == "sent"):
         id = create_email(data['list'], data['subject'], data['message'], "sent")
     else:
-        update_email(data['id'], data['list'], data['subject'], data['message'])
+        update_email(data['id'], data['list'], data['subject'], data['message'], "sent")
         id = data['id']
     send_bulk(id)
     flash("Email sent")
@@ -49,7 +49,8 @@ def save_email_api():
     if (data['id'] == ""):
         id = create_email(data['list'], data['subject'], data['message'], "draft")
     else:
-        update_email(data['id'], data['list'], data['subject'], data['message'])
+        print("log")
+        update_email(data['id'], data['list'], data['subject'], data['message'], "draft")
     flash("Email saved")
     return render_template('index.html')
 

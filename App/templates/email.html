@@ -61,6 +61,7 @@ input[type=submit] {
     <div class="row">
       <form id="form" action="#">
         <input name="id" value={{email.id}} hidden>
+        <input name="status" value={{email.status}} hidden>
 
         <label for="list">List:</label><br>
         <select name="list" id="list">
@@ -111,7 +112,22 @@ input[type=submit] {
             window.location.href = "/success";
           else
             window.location.href = "/fail";
-        }  else {
+        }  else if (event.submitter.value === "Save Draft") {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+          const info = {
+            body: JSON.stringify(data),
+            method: 'UDPATE',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+          const res = await fetch(`/api/emails/update`, info);
+          if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
+        } else {
           const formData = new FormData(form);
           const data = Object.fromEntries(formData);
           const info = {
