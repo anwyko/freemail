@@ -89,6 +89,14 @@
     })
   });
 </script> -->
+
+  $(document).ready(function(){
+    $('#Compose').click(function(){
+      $('.display-area').load($(this).attr('href'));
+      return false;
+    })
+  });
+</script>
       <section class= "inner-layout">
         
 
@@ -107,7 +115,7 @@
           <button onclick="CreateResponse()" class="dropbtn"><i class="bi bi-plus"></i> Create </button>
 
           <div id="myDropdown" class="dropdown-content">
-            <a href="/">Home</a>
+            <a id="Compose" href="/compose">Compose</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
