@@ -18,7 +18,6 @@ from App.controllers import *
 # )
 
 from App.views import (
-    nav_views,
     user_views,
     email_views,
     list_views,
@@ -29,7 +28,6 @@ from App.views import (
 from App.models import *
 
 views = [
-    nav_views,
     user_views,
     email_views,
     list_views,
@@ -68,7 +66,7 @@ def create_app(config={}):
     add_views(app, views)
     create_db(app)
     setup_jwt(app)
-    init_email(app)
+    init_email(app) 
     app.app_context().push()
     return app
 
@@ -134,6 +132,3 @@ def populate_db():
     add_recipient_to_list(lists[2].id, recipients[8].id)
     add_recipient_to_list(lists[0].id, recipients[9].id)
     db.session.commit()
-
-    if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=8080, debug=True)
