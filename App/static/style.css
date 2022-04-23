@@ -362,6 +362,28 @@ min-width: 10%;
   margin-top: 10px;
 }
 
+@keyframes transitionIn{
+
+  from{
+    opacity: 0;
+    transform: translateY(10px)
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0px)
+  }
+}
+
+#display-area-content{
+  animation: transitionIn 0.75s ease;
+  }
+
+#display-area-content p{
+  margin-left: 35px;
+  color: white;
+  }
+  
 #display-area-content p{
 margin-left: 35px;
 color: white;

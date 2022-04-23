@@ -22,6 +22,8 @@
 
   <title>freemail</title>
 
+
+
   </head>
 
     <body>
@@ -52,50 +54,6 @@
       </header>
 
 
-      
-<!-- <script>
-  $(document).ready(function(){
-    $('#List').click(function(){
-      $('.display-area').load($(this).attr('href'));
-      return false;
-    })
-  });
-
-  $(document).ready(function(){
-    $('#Sent').click(function(){
-      $('.display-area').load($(this).attr('href'));
-      return false;
-    })
-  });
-
-  $(document).ready(function(){
-    $('#Contact').click(function(){
-      $('.display-area').load($(this).attr('href'));
-      return false;
-    })
-  });
-
-  $(document).ready(function(){
-    $('#Draft').click(function(){
-      $('.display-area').load($(this).attr('href'));
-      return false;
-    })
-  });
-
-  $(document).ready(function(){
-    $('#Account').click(function(){
-      $('.display-area').load($(this).attr('href'));
-      return false;
-    })
-  });
-
-  $(document).ready(function(){
-    $('#Compose').click(function(){
-      $('.display-area').load($(this).attr('href'));
-      return false;
-    })
-  });
-  </script> -->
 </script>
       <section class= "inner-layout">
         
@@ -110,7 +68,6 @@
       <li><a id = "Draft" href="/emails/drafts" ><i class="bi bi-envelope-open"></i>  Drafts</a></li>
       <li><a id = "Account" href="/users/1" ><i class="bi bi-gear"></i> Account</a></li>
       <li>
-
         <div class="dropdown">
           <button onclick="CreateResponse()" class="dropbtn"><i class="bi bi-plus"></i> Create </button>
 
@@ -143,7 +100,15 @@
     <!-- Main Display Area -->
     <div class="display-area"> 
 
-      {% block content %}{% endblock %}
+      {% block content %}
+      <div id = "display-bg-img">
+      </div>
+  
+      <div id="display-area-content">
+      <p id = "header" >Lets cut to the chase.</p>
+      <p> You needed to reach your audience affordably? <br> Welcome to <span>freemail.</span></p>
+      </div>
+      {% endblock %}
       
     </div>
 
