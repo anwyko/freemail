@@ -3,6 +3,10 @@
 
 {{ super() }}
 
+<!--Import local css stylesheet-->
+<link rel="stylesheet" href="{{ url_for('static', filename='template-styling.css') }}">
+
+
 {% block content %}
     <style>
         label {

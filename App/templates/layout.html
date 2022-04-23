@@ -25,13 +25,6 @@
 
 
   </head>
-  <style> 
-  
-  body{
-    overflow-y:scroll;
-  }
- 
- </style>
 
     <body>
       {% with messages = get_flashed_messages() %}
@@ -51,7 +44,7 @@
       <header>
       <div class = "navbar">
 
-          <a id = "freemail" href="/">freemail.</a>
+          <a id = "freemail" href="/home">freemail.</a>
             
               <div class="search-container">
                 <div id="nav-rounded-corners">
@@ -97,11 +90,9 @@
           </div>
         </div>
     </li>
-    
-
-
+  
       <div id="current-date">
-        <p id="title">date: </p>
+        <p id="title">mini cal: </p>
         <p id = "day"> </p>
       </div>
 

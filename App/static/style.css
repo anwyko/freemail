@@ -3,7 +3,8 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@600&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+  
   html{
     min-height: 100%;
     /*background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);*/
@@ -295,9 +296,10 @@ margin-bottom: -20px;
 padding: 0;
 }
 
-
-
-
+.vertical-menu #current-date #day{
+font-family: 'Poppins', sans-serif;
+font-size: 100px;
+}
 
 @keyframes gradient {
   0% {
@@ -318,18 +320,18 @@ padding: 0;
   overflow: hidden;
 
   margin-top: 10px;
-  margin-left: 14vw;
+  margin-left: 15vw;
   z-index: 2;
   
   border-radius: 50px;
 
   padding: 0;
 min-width: 10%;
- height: 86vh;
+ height: 83vh;
  width: 83.5vw;
 
  background: radial-gradient(circle, rgba(36,36,36,1) 23%, rgba(36,36,36,1) 75%, rgba(31,31,31,1) 97%, rgba(0,0,0,1) 100%);
-  box-shadow:(8px 8px 16px 8px rgba(0,0,0,0.4));
+  box-shadow:(8px 8px 16px 8px rgba(.4,.4,0,0.4));
 }
 
 .display-area #display-bg-img{
@@ -387,7 +389,6 @@ min-width: 10%;
 #display-area-content p{
 margin-left: 35px;
 color: white;
-
 }
 
 #display-area-content span{

@@ -4,31 +4,17 @@
 {{ super() }}
 
 {% block content %}
-    <style>
-        table{
-          margin-top: 5%;
-          margin-left: 0%;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+ <!--Import local css stylesheet-->
+ <link rel="stylesheet" href="{{ url_for('static', filename='template-styling.css') }}">
 
-        td, th {
-          text-align: center;
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: rgb(80, 135, 197);
-            border:0ch;
-            padding-left: 50px;
-        }
-        table:hover {
-          cursor: pointer;
-        }
 
-        th{
-          color: blueviolet;
-        
-        }
+<body>
 
-    </style>
-
-    <div class="row">
+<div id="lists-img"></div>
+ <div class="row">
       <table>
         <thead>
           <tr>
@@ -42,9 +28,11 @@
               <td value={{list.id}}>{{list.name}}</td>
             </tr>
           {% endfor %}
-        <tbody>
+          </tbody>
       </table>
     </div>
+  </body> 
+
 
     <script>
       window.addEventListener('DOMContentLoaded', (event) => {

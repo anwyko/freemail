@@ -21,13 +21,13 @@ def login():
         current_user = authenticate(user, passw)
         if(current_user != None):
             # login_user(current_user, remember = True)
-            return redirect(url_for('api_views.get_layout_docs', usr = user))  
+            return redirect(url_for('api_views.get_layout_docs'))  
     else:
         return render_template('homepage.html')
 
 
-@api_views.route('/home/<usr>', methods=['GET'])
-def get_layout_docs(usr):
+@api_views.route('/home', methods=['GET'])
+def get_layout_docs():
         return render_template('layout.html')   
 
 
