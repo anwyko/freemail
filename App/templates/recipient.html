@@ -74,11 +74,6 @@ input[name=email], select{
     </style>
 
     <div class="row">
-      <form method="POST" action="/upload" enctype="multipart/form-data">
-        <p>Add recipients from CSV</p>
-        <p><input type="file" name="file"></p>
-        <p><input type="submit" value="Submit"></p>
-      </form>
 
       <form id="form">
         <input name="id" value={{recip.id}} hidden>
@@ -108,7 +103,7 @@ input[name=email], select{
     <script>
       document.forms['form'].addEventListener('submit', createRecipient);
 
-      function createRecipient(event) {
+      async function createRecipient(event) {
         event.preventDefault();
         const myForm = event.target;
         const formData = new FormData(form);
@@ -122,7 +117,11 @@ input[name=email], select{
             'Content-Type': 'application/json'
           }
         }
-        const res = fetch('/api/recipients/create', info);
+        const res = await fetch('/api/recipients/create', info);
+        if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
         } else {
           const info = {
           method: 'DELETE',
@@ -130,7 +129,11 @@ input[name=email], select{
             'Content-Type': 'application/json'
           }
         }
-        const res = fetch(`/api/recipients/delete/${data.id}`, info);
+        const res = await fetch(`/api/recipients/delete/${data.id}`, info);
+        if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
         }
         
       }

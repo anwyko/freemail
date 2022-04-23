@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Email{% endblock %}
+{% block title %}Compose{% endblock %}
 
 {{ super() }}
 
@@ -93,9 +93,10 @@ input[type=submit] {
     </div>
 
     <script>
+      
       document.forms['form'].addEventListener('submit', sendEmail);
 
-      function sendEmail(event) {
+      async function sendEmail(event) {
         event.preventDefault();
         const myForm = event.target;
         if (event.submitter.value === "Send Email") {
@@ -108,18 +109,26 @@ input[type=submit] {
               'Content-Type': 'application/json'
             }
           }
-          const res = fetch('/api/emails/send', info);
+          const res = await fetch('/api/emails/send', info);
+          if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
         } else {
           const formData = new FormData(form);
           const data = Object.fromEntries(formData);
           const info = {
             body: JSON.stringify(data),
-            method: 'POST',
+            method: 'UPDATE',
             headers: {
               'Content-Type': 'application/json'
             }
           }
-          const res = fetch('/api/emails/save', info);
+          const res = await fetch('/api/emails/update', info);
+          if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
         }
         
       }

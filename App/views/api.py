@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, send_from_directory, url_for
+from flask import Blueprint, redirect, render_template, request, send_from_directory, url_for, flash
 from flask_login import current_user
 from App.controllers import auth
 
@@ -9,7 +9,17 @@ api_views = Blueprint('api_views', __name__, template_folder='../templates')
 
 @api_views.route('/', methods=['GET'])
 def get_api_docs():
-    return render_template('homepage.html')
+    return render_template('index.html')
+
+@api_views.route('/success', methods=['GET'])
+def success():
+    flash("Request successful")
+    # return render_template('index.html')
+
+@api_views.route('/fail', methods=['GET'])
+def fail():
+    flash("Request unsuccessful")
+    return render_template('index.html')
 
 @api_views.route('/login', methods=['POST','GET'])
 def login():

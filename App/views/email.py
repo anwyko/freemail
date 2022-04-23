@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, jsonify, request, send_from_directory, flash
+from flask import Blueprint, redirect, url_for, render_template, jsonify, request, send_from_directory, flash
 from flask_jwt import jwt_required
+
 
 
 from App.controllers import (
@@ -33,10 +34,11 @@ def get_email_api(id):
 @email_views.route('/api/emails/send', methods=['POST'])
 def send_email_api():
     data = request.get_json()
-    if (data['id'] == ""):
+    if (data['id'] == "" or data['status'] == "sent"):
         id = create_email(data['list'], data['subject'], data['message'], "sent")
     else:
-        id = update_email(data['id'], data['list'], data['subject'], data['message'])
+        update_email(data['id'], data['list'], data['subject'], data['message'], "sent")
+        id = data['id']
     send_bulk(id)
     flash("Email sent")
     return render_template('index.html')
@@ -47,7 +49,8 @@ def save_email_api():
     if (data['id'] == ""):
         id = create_email(data['list'], data['subject'], data['message'], "draft")
     else:
-        id = update_email(data['id'], data['list'], data['subject'], data['message'])
+        print("log")
+        update_email(data['id'], data['list'], data['subject'], data['message'], "draft")
     flash("Email saved")
     return render_template('index.html')
 
@@ -76,5 +79,4 @@ def get_sent_page():
 def get_drafts_page():
     emails = get_drafts()
     return render_template('emails.html', emails=[emails, "Drafts"])
-
 

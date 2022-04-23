@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Sent{% endblock %}
+{% block title %}Recipients{% endblock %}
 
 {{ super() }}
 
@@ -18,13 +18,14 @@
       <table>
         <thead>
           <tr>
-            <th>ID</th><th>Name</th><th>Email</th><th>List</th>
+            <th>First Name</th><th>Last Name</th><th>Email</th>
           </tr>
         </thead>
         <tbody>
           {% for recip in recips %}
             <tr>
-              <td value={{recip.id}}>{{recip.id}}</td>
+              <td value={{recip.id}}>{{recip.firstName}}</td>
+              <td value={{recip.id}}>{{recip.lastName}}</td>
               <td value={{recip.id}}>{{recip.email}}</td>
               <td></td>
               <td></td>
@@ -44,7 +45,8 @@
 
       function open(event) {
         const id = event.target.getAttribute("value");
-        window.location.href = `/recipients/${id}`;
+        if (id != null)
+          window.location.href = `/recipients/${id}`;
       }
       
     </script>

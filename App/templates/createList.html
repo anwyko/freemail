@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Recipient{% endblock %}
+{% block title %}Create List{% endblock %}
 
 {{ super() }}
 
@@ -73,7 +73,7 @@ input[type=submit] {
         <label for="recipients">Choose recipient(s):</label><br>
         <select name="recipients" id="recipients" multiple>
           {% for recip in recips %}
-            <option>{{recip.email}}</option>
+            <option value={{recip.id}}>{{recip.email}}</option>
           {% endfor %}
         </select>
         
@@ -86,7 +86,7 @@ input[type=submit] {
     <script>
       document.forms['form'].addEventListener('submit', createList);
 
-      function createList(event) {
+      async function createList(event) {
         event.preventDefault();
         const myForm = event.target;
         const formData = new FormData(form);
@@ -98,7 +98,7 @@ input[type=submit] {
           if (recip.selected == true)
             arr.push(recip.value);
         })
-
+        console.log(arr);
         const final = [data, arr];
         const info = {
           body: JSON.stringify(final),
@@ -107,7 +107,11 @@ input[type=submit] {
             'Content-Type': 'application/json'
           }
         }
-        const res = fetch('/api/lists/create', info);
+        const res = await fetch('/api/lists/create', info);
+        if (res.status == 200)
+            window.location.href = "/success";
+          else
+            window.location.href = "/fail";
       }
     </script>
 {% endblock %}
