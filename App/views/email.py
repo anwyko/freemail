@@ -9,6 +9,8 @@ from App.controllers import (
     send_email,
     send_bulk,
     get_email,
+    get_sent,
+    get_drafts,
     get_email_json,
     get_all_emails,
     get_all_emails_json,
@@ -26,3 +28,18 @@ def get_emails_api():
 @email_views.route('/api/emails/<id>')
 def get_email_api(id):
     return get_email_json(id)
+
+@email_views.route('/emails/sent')
+def get_sent_page():
+    emails = get_sent()
+    return render_template('sent.html', emails=emails)
+
+@email_views.route('/emails/drafts')
+def get_drafts_page():
+    emails = get_drafts()
+    return render_template('drafts.html', emails=emails)
+
+@email_views.route('/emails/<id>')
+def get_email_page(id):
+    email = get_email(id)
+    return render_template('email.html', email=email)

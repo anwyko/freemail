@@ -8,6 +8,7 @@ from App.controllers import (
     get_recipient,
     get_recipient_json,
     get_all_recipients,
+    get_all_emails,
     get_all_recipients_json,
     update_recipient,
     delete_recipient,
@@ -24,3 +25,8 @@ def get_recipients_api():
 @recipient_views.route('/api/recipients/<id>')
 def get_recipient_api(id):
     return get_recipient_json(id)
+
+@recipient_views.route('/recipients')
+def get_recipients_page():
+    recips = get_all_recipients()
+    return render_template('recipients.html', recips=recips)

@@ -1,22 +1,27 @@
 {% extends "layout.html" %}
-{% block title %}Users{% endblock %}
-{% block page %}Users{% endblock %}
+{% block title %}Sent{% endblock %}
 
 {{ super() }}
 
 {% block content %}
+    <style>
+        td, th {
+            color: white;
+        }
+    </style>
+
     <div class="row">
       <table>
         <thead>
           <tr>
-            <th>Id</th><th>Username</th>
+            <th>ID</th><th>Name</th>
           </tr>
         </thead>
         <tbody>
-          {% for user in users %}
+          {% for email in emails %}
             <tr>
-                <td>{{user.id}}</td>
-                <td>{{user.username}}</td>
+              <td>{{email.id}}</td>
+              <td>{{email.subject}}</td>
             </tr>
           {% endfor %}
         <tbody>

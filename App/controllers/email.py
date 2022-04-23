@@ -14,6 +14,12 @@ def get_all_emails():
 def get_email(emailID):
     return Email.query.filter_by(id=emailID).first()
 
+def get_sent():
+    return Email.query.filter_by(status="sent")
+
+def get_drafts():
+    return Email.query.filter_by(status="draft")
+
 def get_all_emails_json():
     emails = Email.query.all()
     if not emails:

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Account{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+    <style>
+        td, th {
+            color: white;
+        }
+    </style>
+
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>{{user.id}}</td>
+              <td>{{user.username}}</td>
+            </tr>
+        <tbody>
+      </table>
+    </div>
+{% endblock %}

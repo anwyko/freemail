@@ -25,11 +25,10 @@
   </head>
 
     <body>
-
+      
 
       <header>
       <div class = "navbar">
-
 
           <a id = "freemail" href="/">freemail.</a>
             
@@ -54,7 +53,7 @@
 
 
       
-<script>
+<!-- <script>
   $(document).ready(function(){
     $('#List').click(function(){
       $('.display-area').load($(this).attr('href'));
@@ -89,19 +88,19 @@
       return false;
     })
   });
-</script>
+</script> -->
       <section class= "inner-layout">
-
+        
 
     <div class="vertical-menu">
       <div id="menu-gradient"></div>
 
       <ul id = "listing" >
-      <li><a id = "List" href="/list"><i class="bi bi-list"></i>  List</a>
-        <li><a id = "Sent" href="/sent"><i class="bi bi-arrow-right-short"></i> Sent</a></li>
-      <li><a id = "Contact" href="/contact"><i class="bi bi-telephone"></i> Contact</a></li>
-      <li><a id = "Draft" href="/draft" ><i class="bi bi-envelope-open"></i>  Draft</a></li>
-      <li><a id = "Account" href="/account" ><i class="bi bi-gear"></i> Account</a></li>
+      <li><a id = "List" href="/lists"><i class="bi bi-list"></i>  Lists</a>
+        <li><a id = "Sent" href="/emails/sent"><i class="bi bi-arrow-right-short"></i> Sent</a></li>
+      <li><a id = "Contacts" href="/recipients"><i class="bi bi-telephone"></i> Recipients</a></li>
+      <li><a id = "Draft" href="/emails/drafts" ><i class="bi bi-envelope-open"></i>  Drafts</a></li>
+      <li><a id = "Account" href="/users/1" ><i class="bi bi-gear"></i> Account</a></li>
       <li>
 
         <div class="dropdown">
@@ -135,19 +134,13 @@
 
     <!-- Main Display Area -->
     <div class="display-area"> 
-      <div id = "display-bg-img">
-      </div>
 
-      <div id="display-area-content">
-        <p id = "header" >Lets cut to the chase.</p>
-        <p> You needed to reach your audience affordably? <br> Welcome to <span>freemail.</span></p>
-      </div>
-
-
+      {% block content %}{% endblock %}
+      
     </div>
 
-
   </section>
+  
     <!--<footer>
       <p>Copyright 2022, FreeMail LTD. All Rights Reserved </p>
     </footer>-->

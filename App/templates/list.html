@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}List{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+    <style>
+        td, th {
+            color: white;
+        }
+    </style>
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for recipient in recipients%}
+            <tr>
+                <td>{{recipient.id}}</td>
+                <td>{{recipient.email}}</td>
+            </tr>
+          {% endfor %}
+        <tbody>
+      </table>
+    </div>
+{% endblock %}

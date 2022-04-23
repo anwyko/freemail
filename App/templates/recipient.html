@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Contact{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+    <style>
+        td, th {
+            color: white;
+        }
+    </style>
+
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>{{email.id}}</td>
+              <td>{{email.email}}</td>
+            </tr>
+        <tbody>
+      </table>
+    </div>
+{% endblock %}
