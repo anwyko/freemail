@@ -43,9 +43,7 @@ def get_users_api():
 def get_user_api(id):
     return get_user_json(id)
 
-<<<<<<< HEAD
 
-=======
 @user_views.route('/api/users/update', methods=['UPDATE'])
 def save_user_api():
     # data = request.get_json()
@@ -53,4 +51,3 @@ def save_user_api():
     # flash("Account updated")
     # return render_template('account.html')
     return render_template('index.html')
->>>>>>> 432424be47fffc56de1e07913110811ff7f5704a
