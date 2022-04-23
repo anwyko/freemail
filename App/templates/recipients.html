@@ -4,36 +4,16 @@
 {{ super() }}
 
 {% block content %}
-    <style>
 
-        table{
-          margin-top: 5%;
-          margin-left: 0%; 
-          border: 1px solid #ddd;
-        }
+<!--Import local css stylesheet-->
+<link rel="stylesheet" href="{{ url_for('static', filename='template-styling.css') }}">
 
-        tr{
-          border: 1px solid #ddd;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
 
-    
-        td, th {
-            text-align: center;
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: rgb(80, 135, 197);
-            padding-left: 100px;
-        }
 
-        th{
-          color: blueviolet;
-        }
-
-        table:hover {
-          cursor: pointer;
-        }
-
-    </style>
-
+<div id="recipients-img"></div>
     <div class="row">
       <table>
         <thead>
