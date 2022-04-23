@@ -55,7 +55,8 @@
 
       function open(event) {
         const id = event.target.getAttribute("value");
-        window.location.href = `/lists/${id}`;
+        if (id != null)
+          window.location.href = `/lists/${id}`;
       }
       
     </script>

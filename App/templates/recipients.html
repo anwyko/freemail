@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Sent{% endblock %}
+{% block title %}Recipients{% endblock %}
 
 {{ super() }}
 
@@ -38,11 +38,7 @@
       <table>
         <thead>
           <tr>
-<<<<<<< HEAD
             <th>First Name</th><th>Last Name</th><th>Email</th>
-=======
-            <th>ID</th><th>Name</th><th>Email</th><th>List</th>
->>>>>>> 091bc8aa5089010c1af4d299ad560098dbb095a1
           </tr>
         </thead>
         <tbody>
@@ -69,7 +65,8 @@
 
       function open(event) {
         const id = event.target.getAttribute("value");
-        window.location.href = `/recipients/${id}`;
+        if (id != null)
+          window.location.href = `/recipients/${id}`;
       }
       
     </script>

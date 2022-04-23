@@ -57,7 +57,8 @@
 
       function open(event) {
         const id = event.target.getAttribute("value");
-        window.location.href = `/emails/${id}`;
+        if (id != null)
+          window.location.href = `/emails/${id}`;
       }
       
     </script>
