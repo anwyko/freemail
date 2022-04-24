@@ -26,6 +26,7 @@ def get_users_page():
     return render_template('users.html', users=users)
 
 @user_views.route('/users/<id>', methods=['GET'])
+@jwt_required()
 def get_user_page(id):
     user = get_user(id)
     return render_template('account.html', user=user)
