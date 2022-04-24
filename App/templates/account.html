@@ -3,11 +3,6 @@
 
 {{ super() }}
 
-<!--Import local css stylesheet-->
-<link rel="stylesheet" href="{{ url_for('static', filename='template-styling.css') }}">
-
-
-
 {% block content %}
     <style>
         label {
@@ -15,7 +10,39 @@
             width: 100%;
         }
 
+@keyframes transitionIn{
+
+  from{
+    opacity: 0;
+    transform: translateY(10px)
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0px)
+  }
+}
+
+    .row{
+      animation: transitionIn 0.75s;
+      margin-left: 20px !important;
+      margin-top: 50px !important;
+
+    }
+
+
+input{
+  color: white;
+  border: 2px;
+  outline: 1px white;
+  background: grey;
+}
     </style>
+
+
+
+
+
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 <nav class="white black-text" style="padding: 10px">
@@ -35,7 +62,7 @@
 
         <div class="row">
           <label for="firstName">First Name</label><br>
-          <input value={{user.firstName}} name="firstName" type="text"  placeholder="First name..">
+          <input id = "fn" value={{user.firstName}} name="firstName" type="text"  placeholder="First name..">
         </div>
 
         <div class="row">
@@ -82,4 +109,5 @@
         
       }
     </script>
+
 {% endblock %}
