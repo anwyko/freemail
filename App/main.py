@@ -6,7 +6,20 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
 from datetime import timedelta
-
+from distutils.command.config import config
+import json
+from flask import Flask, Blueprint, redirect, render_template, request, send_from_directory, url_for, flash, jsonify, session, make_response
+from flask_login import current_user
+from App.controllers import auth
+import jwt
+from datetime import datetime, timedelta
+from functools import wraps
+import os
+from flask_uploads import DOCUMENTS, IMAGES, TEXT, UploadSet, configure_uploads
+from flask_cors import CORS
+from werkzeug.utils import secure_filename
+from werkzeug.datastructures import FileStorage
+from App.controllers.auth import authenticate, login_user
 
 from App.database import create_db, get_migrate
 
@@ -18,7 +31,6 @@ from App.controllers import *
 # )
 
 from App.views import (
-    nav_views,
     user_views,
     email_views,
     list_views,
@@ -29,7 +41,6 @@ from App.views import (
 from App.models import *
 
 views = [
-    nav_views,
     user_views,
     email_views,
     list_views,
@@ -74,6 +85,26 @@ def create_app(config={}):
 
 app = create_app()
 migrate = get_migrate(app)
+
+@api_views.route('/login', methods=['POST','GET'])
+def login():
+    if request.method == 'POST':
+        user = request.form["user"]
+        passw = request.form["passkey"]
+        check = request.form.getlist("remember-me")
+
+        current_user = authenticate(user, passw)
+        if(current_user != None):
+            login_user(user)
+            token = jwt.encode({ 
+                'user': request.form["user"],
+                'expiration': str(datetime.utcnow() + timedelta(seconds = 120))
+            },
+                os.environ.get('SECRET_KEY'))
+            return jsonify({'token': token.decode('utf-8')})
+        else:
+          return render_template('homepage.html')
+
 
 @app.route("/upload", methods=['POST'])
 def uploadFiles():
@@ -135,5 +166,40 @@ def populate_db():
     add_recipient_to_list(lists[0].id, recipients[9].id)
     db.session.commit()
 
-    if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=8080, debug=True)
+def token_required(func):
+    @wraps(func)
+    def decorated(*args, **kwargs):
+        token = request/args.get('token')
+        if not token:
+          return json({'Alert!':'Token is missing'})
+        try:
+          payload = jwt.decode(token, app.config['SECRET_KEY'])
+        except:
+              return jsonify({'Alert':"Invalid Token"})
+    return decorated
+
+
+@app.route('/login', methods=['POST','GET'])
+def login():
+    if request.method == 'POST':
+        user = request.form["user"]
+        passw = request.form["passkey"]
+        check = request.form.getlist("remember-me")
+
+        current_user = authenticate(user, passw)
+        if(current_user != None):
+            token = jwt.encode({ 
+                'user': request.form["user"],
+                 'expiration': str(datetime.datetime.utcnow().utcnow() + timedelta(seconds = 120))
+            },
+                app.config['SECRET_KEY'])
+            return render_template('layout.html')
+        else:
+          return render_template('homepage.html')
+
+
+@app.route('/home', methods=['GET'])
+def get_layout_docs():
+        return render_template('layout.html')   
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080, debug=True)

@@ -1,11 +1,20 @@
-from flask import Blueprint, redirect, render_template, request, send_from_directory, url_for, flash
+from distutils.command.config import config
+import json
+from flask import Flask, Blueprint, redirect, render_template, request, send_from_directory, url_for, flash, jsonify, session, make_response
 from flask_login import current_user
 from App.controllers import auth
-
+import jwt
+from datetime import datetime, timedelta
+from functools import wraps
+import os
+from flask_uploads import DOCUMENTS, IMAGES, TEXT, UploadSet, configure_uploads
+from flask_cors import CORS
+from werkzeug.utils import secure_filename
+from werkzeug.datastructures import FileStorage
 from App.controllers.auth import authenticate, login_user
 
-
 api_views = Blueprint('api_views', __name__, template_folder='../templates')
+
 
 @api_views.route('/', methods=['GET'])
 def get_api_docs():
@@ -21,24 +30,8 @@ def fail():
     flash("Request unsuccessful")
     return render_template('index.html')
 
-@api_views.route('/login', methods=['POST','GET'])
-def login():
-    if request.method == 'POST':
-        user = request.form["user"]
-        passw = request.form["passkey"]
-        check = request.form.getlist("remember-me")
-
-        current_user = authenticate(user, passw)
-        if(current_user != None):
-            # login_user(current_user, remember = True)
-            return redirect(url_for('api_views.get_layout_docs'))  
-    else:
-        return render_template('homepage.html')
 
 
-@api_views.route('/home', methods=['GET'])
-def get_layout_docs():
-        return render_template('layout.html')   
 
 
 

@@ -19,4 +19,20 @@ async function main(){
     loadTable(users);
 }
 
+
+function setToken(token){
+    localStorage.setItem('dextr-token', token);
+    token = val;
+    console.log('token saved');
+  }
+  
+  document.querySelector("#tokenText").addEventListener('change',event=>{
+    setToken(event.target.value);
+  });
+
+
+
+
+
+
 main();
