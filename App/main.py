@@ -11,11 +11,6 @@ from datetime import timedelta
 from App.database import create_db, get_migrate
 
 from App.controllers import *
-# (
-#     setup_jwt,
-#     init_email,
-#     create_recipients_from_csv
-# )
 
 from App.views import (
     user_views,
@@ -42,7 +37,7 @@ def add_views(app, views):
 
 def loadConfig(app, config):
     app.config['ENV'] = os.environ.get('ENV', 'DEVELOPMENT')
-    if app.config['ENV'] == "DEVELOPMENT":
+    if app.config['ENV'] == "DPRODUCTION":
         app.config.from_object('App.config')
     else:
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
@@ -55,7 +50,7 @@ def loadConfig(app, config):
 
 def create_app(config={}):
     app = Flask(__name__, static_url_path='/static')
-    CORS(app)
+    CORS(app) 
     loadConfig(app, config)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['TEMPLATES_AUTO_RELOAD'] = True
