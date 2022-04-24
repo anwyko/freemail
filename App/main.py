@@ -169,9 +169,9 @@ def populate_db():
 def token_required(func):
     @wraps(func)
     def decorated(*args, **kwargs):
-        token = request/args.get('token')
+        token = request.args.get('token')
         if not token:
-          return json({'Alert!':'Token is missing'})
+          return jsonify({'Alert!':'Token is missing'})
         try:
           payload = jwt.decode(token, app.config['SECRET_KEY'])
         except:
