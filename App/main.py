@@ -79,7 +79,7 @@ def create_app(config={}):
     add_views(app, views)
     create_db(app)
     setup_jwt(app)
-    init_email(app)
+    init_email(app) 
     app.app_context().push()
     return app
 

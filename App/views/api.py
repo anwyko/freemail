@@ -23,7 +23,7 @@ def get_api_docs():
 @api_views.route('/success', methods=['GET'])
 def success():
     flash("Request successful")
-    # return render_template('index.html')
+    return render_template('index.html')
 
 @api_views.route('/fail', methods=['GET'])
 def fail():
