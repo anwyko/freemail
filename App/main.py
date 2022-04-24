@@ -37,7 +37,7 @@ def add_views(app, views):
 
 def loadConfig(app, config):
     app.config['ENV'] = os.environ.get('ENV', 'DEVELOPMENT')
-    if app.config['ENV'] == "DPRODUCTION":
+    if app.config['ENV'] == "DEVELOPMENT":
         app.config.from_object('App.config')
     else:
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
