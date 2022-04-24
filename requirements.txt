@@ -14,4 +14,3 @@ Werkzeug~=2.0.0
 pyjwt==2.0.0
 datetime
 uuid
-Flask-SQLAlchemy
