@@ -127,7 +127,3 @@ def populate_db():
     add_recipient_to_list(lists[2].id, recipients[8].id)
     add_recipient_to_list(lists[0].id, recipients[9].id)
     db.session.commit()
-
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8080))
-    app.run(debug=True, port=port)
