@@ -45,7 +45,6 @@ def loadConfig(app, config):
         app.config['JWT_EXPIRATION_DELTA'] =  timedelta(days=int(os.environ.get('JWT_EXPIRATION_DELTA')))
         app.config['DEBUG'] = os.environ.get('ENV').upper() != 'PRODUCTION'
         app.config['ENV'] = os.environ.get('ENV')
-        app.config['PORT'] = os.environ.get('PORT')
     for key, value in config.items():
         app.config[key] = config[key]
 
@@ -128,3 +127,7 @@ def populate_db():
     add_recipient_to_list(lists[2].id, recipients[8].id)
     add_recipient_to_list(lists[0].id, recipients[9].id)
     db.session.commit()
+
+__name__ == '__main__':
+port = int(os.environ.get("PORT", 8080))
+app.run(debug=True, port=port)
